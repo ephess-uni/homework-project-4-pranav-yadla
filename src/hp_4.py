@@ -46,7 +46,7 @@ def fees_report(infile, outfile):
                 dic[i['patron_id']] += cost
             else:
                 dic[i['patron_id']]=cost
-    li_fee=[{'patron_id':i,'late_fees':j} for i,j in dic.items()]
+    li_fee=[{'patron_id':i,'late_fees':format(j,'.2f')} for i,j in dic.items()]
     with open(outfile , 'w') as csvfile:
         writer = DictWriter(csvfile, fieldnames=['patron_id', 'late_fees'])
         writer.writeheader()
